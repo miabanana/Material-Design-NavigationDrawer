@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/g1">
+        <item
+            android:id="@+id/navigation_item_1"
+            android:icon="@drawable/ic_drawer"
+            android:title="Drawer Items 1"/>
+        <item
+            android:id="@+id/navigation_item_2"
+            android:icon="@drawable/ic_drawer"
+            android:title="Drawer Items 2"/>
+        <item
+            android:id="@+id/navigation_item_3"
+            android:icon="@drawable/ic_drawer"
+            android:title="Drawer Items 3"/>
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/g2">
+        <item
+            android:id="@+id/navigation_item_4"
+            android:icon="@drawable/ic_action_call"
+            android:title="Drawer Items 4"/>
+        <item
+            android:id="@+id/navigation_item_5"
+            android:icon="@drawable/ic_action_call"
+            android:title="Drawer Items 5" />
+    </group>
+</menu>
