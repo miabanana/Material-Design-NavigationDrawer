@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header"
-        android:id="@+id/tvHeader"
+        android:id="@+id/header"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_centerVertical="true"
@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/content"
-        android:id="@+id/tvHeader2"
+        android:id="@+id/header2"
         android:textSize="18sp"
-        android:layout_below="@+id/tvHeader"
-        android:layout_alignRight="@+id/tvHeader"
-        android:layout_alignEnd="@+id/tvHeader"
+        android:layout_below="@+id/header"
+        android:layout_alignRight="@+id/header"
+        android:layout_alignEnd="@+id/header"
         android:layout_marginTop="16dp"/>
 </RelativeLayout>

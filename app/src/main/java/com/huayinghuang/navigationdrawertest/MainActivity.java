@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends ActionBarDrawer {
+public class MainActivity extends ActionBarDrawer implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +27,16 @@ public class MainActivity extends ActionBarDrawer {
 
     @Override
     public void onClick(View v) {
-        int iViewId = v.getId();
 
-        if (iViewId == R.id.button) {
-            Intent intent = new Intent();
-            intent.setClass(this,Main2Activity.class);
-            startActivity(intent);
-        } else {
-            super.onClick(v);
+        switch (v.getId()) {
+            case R.id.button:
+                Intent intent = new Intent();
+                intent.setClass(this,Main2Activity.class);
+                startActivity(intent);
+                break;
+
         }
+
     }
 
     private void initLayout() {

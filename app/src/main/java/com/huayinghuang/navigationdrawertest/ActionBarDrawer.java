@@ -23,13 +23,13 @@ import android.widget.Toast;
 /**
  * Created by miahuang on 2016/1/30.
  */
-public class ActionBarDrawer extends AppCompatActivity implements View.OnClickListener,NavigationView.
+public class ActionBarDrawer extends AppCompatActivity implements NavigationView.
                                                                   OnNavigationItemSelectedListener {
 
-    private DrawerLayout m_drawerLayout = null;
-    private ActionBar m_actionBar = null;
-    private Toolbar m_toolbar = null;
-    private NavigationView m_navigationView = null;
+    private DrawerLayout mDrawerLayout = null;
+    private ActionBar mActionBar = null;
+    private Toolbar mToolbar = null;
+    private NavigationView mNavigationView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,35 +42,37 @@ public class ActionBarDrawer extends AppCompatActivity implements View.OnClickLi
         Toast.makeText(this, item.getTitle() + " pressed", Toast.LENGTH_SHORT).show();
 
         item.setChecked(true);//remember the select item
-        m_drawerLayout.closeDrawers();
+        mDrawerLayout.closeDrawers();
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        int iViewId = v.getId();
-
-        if (iViewId == R.id.ivHamburger) {
-
-            if (m_drawerLayout.isDrawerOpen(GravityCompat.END)) {
-                m_drawerLayout.closeDrawer(GravityCompat.END);
+    private View.OnClickListener onHamburgerClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (mDrawerLayout.isDrawerOpen(GravityCompat.END)) {
+                mDrawerLayout.closeDrawer(GravityCompat.END);
             } else {
-                m_drawerLayout.openDrawer(GravityCompat.END);
+                mDrawerLayout.openDrawer(GravityCompat.END);
             }
 
-        } else if (iViewId == R.id.ivBack) {
+        }
+    };
+
+    private View.OnClickListener onBackClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
             onBackPressed();
         }
-    }
+    };
 
-    protected void setupActionBar() {
-        m_drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+    public final void setupActionBar() {
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
-        m_navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        mNavigationView = (NavigationView)findViewById(R.id.navigation_view);
 
-        m_toolbar = (Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(m_toolbar);
-        m_actionBar = getSupportActionBar();
+        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        mActionBar = getSupportActionBar();
 
         ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
                 ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -79,60 +81,60 @@ public class ActionBarDrawer extends AppCompatActivity implements View.OnClickLi
 
         View customView = getLayoutInflater().inflate(R.layout.action_bar_hamburger_icon, null);
 
-        m_actionBar.setDisplayShowCustomEnabled(true);
-        m_actionBar.setCustomView(customView, layoutParams);
+        mActionBar.setDisplayShowCustomEnabled(true);
+        mActionBar.setCustomView(customView, layoutParams);
 
         Toolbar parent = (Toolbar) customView.getParent();
         parent.setContentInsetsAbsolute(0,0);
     }
 
     //left side for back arrow and right side for hamburger icon
-    protected void setActionBar2Icon() {
-        ImageView ivActionBarRightIcon = (ImageView) m_toolbar.findViewById(R.id.ivHamburger);
-        ivActionBarRightIcon.setOnClickListener(this);
+    public final void setActionBar2Icon() {
+        ImageView actionBarHamburgerIcon = (ImageView) mToolbar.findViewById(R.id.hamburger);
+        actionBarHamburgerIcon.setOnClickListener(onHamburgerClicked);
 
-        ImageView ivActionBarBackIcon = (ImageView) m_toolbar.findViewById(R.id.ivBack);
-        ivActionBarBackIcon.setOnClickListener(this);
+        ImageView actionBarBackIcon = (ImageView) mToolbar.findViewById(R.id.goBack);
+        actionBarBackIcon.setOnClickListener(onBackClicked);
 
-        m_navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView.setNavigationItemSelectedListener(this);
     }
 
     //right side for hamburger icon
-    protected void setActionBarRightIcon() {
-        ImageView ivActionBarRightIcon = (ImageView) m_toolbar.findViewById(R.id.ivHamburger);
-        ivActionBarRightIcon.setOnClickListener(this);
+    public final void setActionBarRightIcon() {
+        ImageView actionBarHamburgerIcon = (ImageView) mToolbar.findViewById(R.id.hamburger);
+        actionBarHamburgerIcon.setOnClickListener(onHamburgerClicked);
 
-        ImageView ivActionBarBackIcon = (ImageView) m_toolbar.findViewById(R.id.ivBack);
-        ivActionBarBackIcon.setVisibility(View.INVISIBLE);
+        ImageView actionBarBackIcon = (ImageView) mToolbar.findViewById(R.id.goBack);
+        actionBarBackIcon.setVisibility(View.INVISIBLE);
 
-        m_navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView.setNavigationItemSelectedListener(this);
     }
 
     //left side for back arrow icon
-    protected void setActionBarLeftIcon() {
-        m_drawerLayout.removeView(m_navigationView);
+    public final void setActionBarLeftIcon() {
+        mDrawerLayout.removeView(mNavigationView);
 
-        ImageView ivActionBarRightIcon = (ImageView) m_toolbar.findViewById(R.id.ivHamburger);
-        ivActionBarRightIcon.setVisibility(View.INVISIBLE);
+        ImageView actionBarHamburgerIcon = (ImageView) mToolbar.findViewById(R.id.hamburger);
+        actionBarHamburgerIcon.setVisibility(View.INVISIBLE);
 
-        ImageView ivActionBarBackIcon = (ImageView) m_toolbar.findViewById(R.id.ivBack);
-        ivActionBarBackIcon.setOnClickListener(this);
+        ImageView actionBarBackIcon = (ImageView) mToolbar.findViewById(R.id.goBack);
+        actionBarBackIcon.setOnClickListener(onBackClicked);
     }
 
     //show only title on action bar
-    protected void setActionBarNoIcon() {
-        m_drawerLayout.removeView(m_navigationView);
+    public final void setActionBarNoIcon() {
+        mDrawerLayout.removeView(mNavigationView);
 
-        ImageView ivActionBarRightIcon = (ImageView) m_toolbar.findViewById(R.id.ivHamburger);
-        ivActionBarRightIcon.setVisibility(View.INVISIBLE);
+        ImageView actionBarHamburgerIcon = (ImageView) mToolbar.findViewById(R.id.hamburger);
+        actionBarHamburgerIcon.setVisibility(View.INVISIBLE);
 
-        ImageView ivActionBarBackIcon = (ImageView) m_toolbar.findViewById(R.id.ivBack);
-        ivActionBarBackIcon.setVisibility(View.INVISIBLE);
+        ImageView actionBarBackIcon = (ImageView) mToolbar.findViewById(R.id.goBack);
+        actionBarBackIcon.setVisibility(View.INVISIBLE);
     }
 
-    protected void setActionBarTitle(String string) {
-        m_actionBar.setDisplayShowTitleEnabled(false);
-        TextView tvTitle = (TextView) m_toolbar.findViewById(R.id.tvActionBarTitle);
-        tvTitle.setText(string);
+    public final void setActionBarTitle(String string) {
+        mActionBar.setDisplayShowTitleEnabled(false);
+        TextView title = (TextView) mToolbar.findViewById(R.id.actionBarTitle);
+        title.setText(string);
     }
 }

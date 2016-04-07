@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvActivity2"
+                android:id="@+id/infoActivity2"
                 android:text="@string/info2"
                 android:textSize="20sp"
                 android:layout_centerVertical="true"

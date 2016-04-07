@@ -2,7 +2,6 @@ package com.huayinghuang.navigationdrawertest;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 public class Main2Activity extends ActionBarDrawer {
 
@@ -23,8 +22,4 @@ public class Main2Activity extends ActionBarDrawer {
         return super.onNavigationItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-    }
 }

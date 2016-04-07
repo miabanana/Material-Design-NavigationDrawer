@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:id="@+id/ivBack"
+        android:id="@+id/goBack"
         android:layout_weight="1"
         android:src="@drawable/ic_action_back"
         android:layout_gravity="center"/>
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:id="@+id/tvActionBarTitle"
+        android:id="@+id/actionBarTitle"
         android:textColor="@color/transparent"
         android:textSize="22sp"
         android:gravity="center"
@@ -26,7 +26,7 @@
         android:layout_weight="1"/>
 
     <ImageView
-        android:id="@+id/ivHamburger"
+        android:id="@+id/hamburger"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:maxWidth="?attr/actionBarSize"
